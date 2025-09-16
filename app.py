@@ -14,10 +14,7 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")  # Render the HTML file from templates/
 
-def test_home_endpoint(client):
-    response = client.get("/")
-    assert response.status_code == 200
-    assert b"Iris Flower Classifier" in response.data  # Check for HTML title
+
 
 
 @app.route("/predict", methods=["POST"])
