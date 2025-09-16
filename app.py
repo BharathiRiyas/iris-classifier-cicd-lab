@@ -1,5 +1,6 @@
 # app.py
-from flask import Flask, request, jsonify
+
+from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
 
@@ -11,7 +12,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Iris Classifier API is Running!"  # Simple message to confirm the server is active
+    return render_template("index.html")  # Render the HTML file from templates/
+
+def test_home_endpoint(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    assert b"Iris Flower Classifier" in response.data  # Check for HTML title
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
