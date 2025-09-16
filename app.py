@@ -6,7 +6,7 @@ import numpy as np
 # Load the trained model from the saved file
 model = joblib.load("iris_model.pkl")
 
-# Initialize the Flask application
+# Initialize the Flask applicatio
 app = Flask(__name__)
 
 @app.route("/")
